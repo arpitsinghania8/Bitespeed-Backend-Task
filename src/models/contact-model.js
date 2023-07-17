@@ -13,13 +13,8 @@ async function getAllContactsFromQuery(query) {
     where: query,
   });
 }
-async function updateContactFromQuery(query, updateQuery) {
-  await Contact.update(updateQuery, {
-    where: query,
-  });
-  return await Contact.findOne({
-    where: query,
-  });
+async function updateContactFromQuery(upsertQuery) {
+  return await Contact.upsert(upsertQuery);
 }
 
 module.exports = {
