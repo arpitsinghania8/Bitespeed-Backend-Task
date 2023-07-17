@@ -11,6 +11,7 @@ async function getContactFromQuery(query) {
 async function getAllContactsFromQuery(query) {
   return await Contact.findAll({
     where: query,
+    order: [["createdAt", 'ASC']]
   });
 }
 async function updateContactFromQuery(upsertQuery) {
