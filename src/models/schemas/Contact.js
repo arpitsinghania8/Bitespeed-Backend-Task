@@ -7,10 +7,10 @@ class Contact extends Model {}
 Contact.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
     phoneNumber: {
       type: DataTypes.INTEGER,
