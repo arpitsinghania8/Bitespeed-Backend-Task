@@ -38,11 +38,17 @@ async function placeOrderService({email, phoneNumber}) {
             updatedAt: timeNow
         };
         const newUserContact = await createContactEntry(newUserContactData);
+        const emails = userContacts.map((userContact)=>userContact.email);
+        const phoneNumbers = userContacts.map((userContact)=>userContact.phoneNumber);
+        const secondaryContactIds = userContacts.map((userContact)=>userContact.id);
+        emails.push(newUserContact.email);
+        phoneNumbers.push(newUserContact.phoneNumber);
+        secondaryContactIds.push(newUserContact.id);
         retObj.contact = {
             primaryContatctId: userContacts[0].id,
-            emails: userContacts.map((userContact)=>userContact.email).push(newUserContact.email),
-            phoneNumbers: userContacts.map((userContact)=>userContact.phoneNumber).push(newUserContact.phoneNumber),
-            secondaryContactIds: userContacts.map((userContact)=>userContact.id).push(newUserContact.id)
+            emails,
+            phoneNumbers,
+            secondaryContactIds
         }
     }
 
