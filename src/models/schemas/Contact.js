@@ -13,7 +13,7 @@ Contact.init(
       autoIncrement: true
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
     },
     email: {
       type: DataTypes.STRING,
